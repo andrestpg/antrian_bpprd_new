@@ -1,0 +1,100 @@
+
+                </div>
+                <!-- End Page-content -->
+
+                
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                2021 © DISKOMINFO Kota Jambi.
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+            
+
+            <!-- Modal -->
+            <div class="modal fade bs-example-modal-lg" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark">
+                            <h5 class="modal-title text-white"></h5>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
+
+            
+            <!-- Load Utility -->
+            <div class="no-display" style="display:none;">
+                <div id="loader">
+                    <div class="text-center my-2 mt-4">
+                        <div class="loader loader-primary"></div>
+                        <p>Memuat Data</p>
+                    </div>
+                </div>
+                <div id="setButton">
+                    <i class="feather icon-settings"></i>
+                </div>
+                <div id="noData">
+                    <div class="my-3 text-center">
+                        <p class="btn btn-secondary">Tidak ada data !</p>
+                    </div>
+                </div>
+                <div id="errData">
+                    <div class="my-3 text-center">
+                        <p class="text-secondary">Terjadi kesalahan, silahkan tekan tombol refresh kembali atau refresh halaman ini! </p>
+                    </div>
+                </div>
+                <div id="dataTipePost">foto</div>
+            </div>
+            <!-- End Load Utility -->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script rel="preconnect" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+        <script src="/admin_template/dist/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/admin_template/dist/assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="/admin_template/dist/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/admin_template/dist/assets/libs/node-waves/waves.min.js"></script>
+
+
+        <!-- Required datatable js -->
+        <script src="/admin_template/dist/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="/admin_template/dist/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/validate-js/2.0.1/validate.min.js" integrity="sha512-8GLIg5ayTvD6F9ML/cSRMD19nHqaLPWxISikfc5hsMJyX7Pm+IIbHlhBDY2slGisYLBqiVNVll+71CYDD5RBqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- Sweetalert -->
+        <script re="preconnect" src="/admin_template/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+        <!-- Selectize -->
+        <script src="/admin_template/dist/assets/libs/selectize/js/standalone/selectize.min.js"></script>
+
+        <script src="/admin_template/dist/assets/js/app.js"></script>
+        
+        <script src="/admin_template/dist/assets/js/utility.js?124"></script>
+    
+        <% if(typeof script !== "undefined"){ %>
+            <script src="/admin_template/dist/assets/js/<%= script %>?124"></script>
+        <% } %>
+
+        <% if(validation){ %>
+            <script src="/admin_template/dist/assets/js/validation/<%= validation %>"></script>
+        <% } %> 
+
+    </body>
+</html>

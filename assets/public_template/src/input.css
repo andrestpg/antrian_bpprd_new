@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body{
+        @apply bg-[url('../img/bg1.png')] bg-cover bg-center bg-no-repeat
+    }
+}
+
+@layer components {
+    .header {
+        @apply h-[15vh] flex justify-between print:hidden;
+    }
+
+    .header-grid {
+        @apply h-[15vh] grid grid-cols-5 gap-4 overflow-hidden;
+    }
+
+    .instansi-wrapper {
+        @apply h-full flex items-center justify-center mr-8;
+    }
+
+    .loket-wrapper {
+        @apply h-[75vh] w-full grid grid-cols-3 px-20 py-10 relative z-10 overflow-hidden;
+    }
+
+    .loket {
+        @apply relative z-10 rounded-md
+         before:absolute before:-left-4 before:bottom-0 before:rounded-l-lg before:w-4 before:h-[calc(100%+.7rem)] before:bg-error 
+         after:absolute after:-left-[.7rem] after:-top-[.6rem] after:rounded-l-full after:w-[.7rem] after:h-[.65rem] after:bg-error after:brightness-75 
+    }
+
+    .loket {
+        @apply relative z-10;
+    }
+
+    .card-antrian {
+        @apply block card-antrian-shadow p-16 relative bg-white overflow-hidden;
+    }
+
+    .loket-menu-button {
+        @apply loket-menu-text rounded-full block w-60 md:w-[90%] uppercase text-white mb-8 p-10 h-fit font-bold btn-shadow;
+    }
+
+    .loket-menu-button.active {
+        @apply bg-loket-button-active border-none loket-button-shadow;
+    }
+
+    .tiket-button {
+        @apply loket-menu-text normal-case disabled:bg-neutral border-none btn-lg h-24 w-96 rounded-box font-semibold btn-shadow relative z-10;
+    }
+
+    .card-loket-wrapper {
+        @apply w-full h-full p-10;
+    }
+
+    .card-loket {
+        @apply block shadow-cs shadow-base-300/20 relative overflow-hidden;
+    }
+
+    .cls-1{
+        @apply stroke-white
+    }
+}
+
+@layer utilities {
+    .text-title {
+        color: #59a9ff;
+    }
+
+    .text-responsive {
+        font-size: calc(0.6rem + 0.8vw);
+        line-height: calc(0.6rem + 0.8vw);
+    }
+
+    .text-responsive-md {
+        font-size: calc(0.5rem + 0.7vw);
+        line-height: calc(0.5rem + 0.7vw);
+    }
+
+    .text-responsive-sm {
+        font-size: calc(0.3rem + 0.7vw);
+        line-height: calc(0.3rem + 0.7vw);
+    }
+
+    .text-number-responsive {
+        font-size: calc(1.5rem + 3vw);
+        line-height: calc(1.5rem + 2vw);
+    }
+
+    .text-number-responsive-md {
+        font-size: calc(1.2rem + 2.7vw);
+        line-height: calc(1.2rem + 2vw);
+        white-space: nowrap;
+    }
+
+    .text-number-responsive-sm {
+        font-size: calc(1rem + 2.7vw);
+        line-height: calc(1rem + 2vw);
+
+    }
+
+    .text-number-modal{
+        font-size: calc(2rem + 3vw);
+        line-height: calc(2rem + 2vw);
+        white-space: nowrap;
+    }
+
+    .modal-box-shadow{
+        box-shadow: 0 0 5rem rgba(255,255,255,.5)
+    }
+
+    .inset-white{
+        box-shadow: inset 0 0 3rem #ffffff;
+    }
+
+    .talk .cls-1 {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        animation: draw 1.5s infinite;
+    }
+
+    .megaphone{
+        stroke: #327bc9;
+    }
+
+    .cls-1 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 19px;
+    }
+
+    @keyframes draw {
+        50% {
+            stroke-dashoffset: 0;
+        }
+        100% {
+            stroke-dashoffset: -60;
+        }
+    }
+
+    .card-antrian-shadow {
+        box-shadow: 0.3rem 0.3rem 4rem 0.1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-gradient {
+        background: #000046; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #4795ea, #000046); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #4795ea, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .bg-loket-button-active{
+        background:#7F8487
+    }
+
+    .loket-button-shadow {
+        box-shadow: 0 0 1rem #7fbfcd, inset 0 0 1.3rem rgba(0, 0, 0, 0.3);
+    }
+
+    .tiket-button::before {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        border-left-color: #ffffff !important;
+    }
+
+    .layanan-text{
+        font-size: calc(1rem + 1.4vw)
+    }
+
+    .sublayanan-text{
+        font-size: calc(1rem + 1vw)
+    }
+
+    .loket-menu-text{
+        font-size: calc(.6rem + 1vw)
+    }
+
+    .desc-text{
+        font-size: calc(.8rem + .5vw)
+    }
+
+    .loket-menu-button.active {
+        position: relative;
+    }
+
+    .loket-menu-button::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-top: 1rem solid transparent;
+        border-left: 1.5rem solid transparent;
+        border-bottom: 1rem solid transparent;
+        background: none;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -1rem;
+        margin-right: -1rem;
+    }
+
+    .loket-menu-button.active::after {
+        border-left: 1.5rem solid #717679;
+    }
+
+    .tiket-button.loading::before {
+        margin-right: 0;
+        height: 2rem !important;
+        width: 2rem !important;
+        border-width: 0.5rem;
+    }
+
+    .img-btn{
+        height: calc(.6rem + 1vw)
+    }
+
+    .img-res-1{
+        width: calc(3rem + 4vw)
+    }
+
+    .img-res-2{
+        width: calc(3rem + 2vw)
+    }
+
+    .swiper-pagination-bullet {
+        background-color: rgba(10, 67, 255, 0.9);
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background-color: #0a43ff;
+        box-shadow: 0 0 10px 3px rgba(10, 67, 255, 0.3);
+    }
+
+    .loket-shadow {
+        box-shadow: 0 0 1rem rgba(10, 67, 255, 0.4);
+    }
+
+    .shadow-cs {
+        box-shadow: 0 .3rem 1.5rem rgba(0,0,0, 0.2);
+    }
+
+    .bg-shadow {
+        box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-shadow {
+        box-shadow: 0.5rem -2rem 2rem 0px rgba(0, 0, 0, 0.4) inset, 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        -webkit-box-shadow: 0.5rem -2rem 2rem 0px rgba(0, 0, 0, 0.4) inset, 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0.5rem -2rem 2rem 0px rgba(0, 0, 0, 0.4) inset, 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+        /* height: 100vh; */
+        width: 100vw;
+    }
+
+    @media print {
+        body {
+            width: 3in;
+            height: 3in !important;
+        }
+        @page {
+            width: 3in !important;
+            height: 3in !important;
+            margin: 1mm;
+        }
+    }
+
+    .ribbon {
+        position: relative;
+        display: inline-block;
+        position: absolute;
+        right:0;
+        transform-origin: 0px 0px;
+        transform: translate(50%, -28.5px) rotate(45deg);
+        color: #ffffff;
+    }
+    .ribbon-css {
+        border-bottom: 20px solid #E92B41;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        height: 20px;
+        width: 140px;
+        text-transform: uppercase;
+        font-size: 11px;
+        white-space: nowrap;
+        text-align: center;
+        font-weight: bold;
+    }
+    .ribbon-css:before,
+    .ribbon-css:after {
+        top: 20px;
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+    }
+    .ribbon-triangle {
+        line-height: 20px;
+    }
+    .ribbon-triangle:before {
+        left: -20px;
+        border-style: solid;
+        border-width: 10px 10px 0 10px;
+        border-color: #aa1124 transparent transparent transparent;
+    }
+    .ribbon-triangle:after {
+        right: -20px;
+        border-style: solid;
+        border-width: 10px 10px 0 10px;
+        border-color: #aa1124 transparent transparent transparent;
+    }
+}

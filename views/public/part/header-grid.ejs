@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+    <head>
+        <title><%= title %></title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/public_template/img/icon.png" type="image/x-icon" />
+        <link href="https://vjs.zencdn.net/7.18.1/video-js.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/public_template/dist/style.css?142" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.css" integrity="sha512-zrPsLVYkdDha4rbMGgk9892aIBPeXti7W77FwOuOBV85bhRYi9Gh+gK+GWJzrUnaCiIEm7YfXOxW8rzYyTuI1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            const baseUrl = "<%= process.env.BASE_URL %>";
+            // if (window.location.href.substr(0, 5) !== "https") {
+            //     window.location.href = window.location.href.replace("http", "https");
+            // }
+        </script>
+    </head>
+    <body>
+        <header class="h-[10vh] flex items-center print:hidden">
+                <img src="/public_template/img/mini-logo.png" class="ml-8 mr-4 h-10" />
+                <h1 class="text-xl font-bold text-blue-600 ">BADAN PENGELOLA PAJAK DAN RETRIBUSI DAERAH <br/> KOTA JAMBI </h1>
+        </header>
+    </body>
+</html>

@@ -1,0 +1,148 @@
+
+body{
+    color: #5a6670;
+    background-color: #e0e5ec;
+}
+
+header{
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 0 3rem;
+}
+
+.img-header{
+    height: 3rem;
+}
+
+p.text-header{
+    display: inline-block;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+main{
+    width: 100%;
+    min-height: 83vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+main .container{
+    padding: 0 8rem 1rem 8rem;
+}
+
+.col-lg-4{
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.spinner-grow{
+    width: 3rem;
+    height: 3rem;
+}
+
+main h3{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.loket-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+}
+
+.col-lg-2{
+    margin-bottom: 5rem;
+}
+
+.loket{
+    overflow: hidden;
+    border-radius: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-basis: 28%;
+    position: relative;
+    padding: 1.3rem 0;
+}
+
+.antrian-button{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 100%;
+    display: flex;
+    box-sizing: border-box !important;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #53B8BB;
+    border-color: #409da0;
+    color: #ffffff;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #53B8BB;
+    border-color: #369b9e;
+    box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 50%);
+}
+
+.btn-check:active+.btn-primary, .btn-check:checked+.btn-primary, .btn-primary.active, .btn-primary:active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #53B8BB;
+    border-color: #369b9e;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #53B8BB;
+    border-color: #369b9e;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #1b7275;
+    border-color: #369b9e;
+}
+
+.loket-name{
+    margin-bottom: .6rem;
+    color: inherit !important;
+}
+
+.loket-numb{
+    font-size: 4rem !important;
+    color: #F05454;
+}
+
+.spinner-grow{
+    width: 3rem;
+    height: 3rem;
+}
+
+.neu-shadow{
+    box-shadow:  1rem 1.2rem 2.2rem #a3b1c6,
+                -1rem -1.2rem 2.2rem #ffffff;
+}
+
+footer{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}

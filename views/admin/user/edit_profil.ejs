@@ -1,0 +1,86 @@
+<%- include('../template/header') %> 
+
+<div class="container">
+</div>
+
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between mb-3">
+                    <h4 class="header-title d-inline col-md-6"><%= title %></h4>
+                </div>
+                
+                <form action="#" method="post" id="userForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-warning err-message hide" role="alert">
+                                <strong>Error</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="user_id" id="userId" value="<%= userLogin.id %>">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="name">Name</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<%= userLogin.name %>">
+                                <div class="invalid-feedback">
+                                Nama tidak valid!<br>
+                                <span class="font-italic font-weight-bold text-secondary">Nama tidak boleh mengandung karakter spesial (symbol)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="username">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="<%= userLogin.username %>">
+                                <div class="invalid-feedback">
+                                Username tidak valid!<br>
+                                <span class="font-italic font-weight-bold text-secondary">Nama tidak boleh mengandung karakter spesial (symbol)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="password1">Password</label>
+                                <input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
+                                <div class="invalid-feedback">
+                                Password harus sama dengan konfirmasi password
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="password2">Confirm Password</label>
+                                <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password">
+                                <div class="invalid-feedback">
+                                    Password harus sama dengan konfirmasi password
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex col-md-6 justify-content-end">
+                        <button class="btn btn-primary btn-block waves-effect waves-light d-flex justify-content-center align-items-center" type="submit" style="width:fit-content;"> 
+                            <div class="loader-wrapper hide">
+                                <div class="loader"></div>
+                            </div>
+                            <span class="mx-2">Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</div>
+
+<%- include('../template/footer') %> 

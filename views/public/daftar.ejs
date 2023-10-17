@@ -1,0 +1,96 @@
+<%- include('./part/header-grid.ejs') %> <% const sistemClass = ['warning', 'info', 'success', 'secondary', 'warning'] %>
+<main class="main-content print:hidden">
+        <div class="loket-wrapper">
+            <div class="loket-menu-wrapper p-12">
+                <p class="text-2xl text-base-content/80 font-semibold mb-8 ml-2">Pilih Layanan:</p>
+                <% kategoris.forEach((data, i) => { %>
+                    <button class="btn btn-<%= sistemClass[i] %> loket-menu-button <%= i == 0 && 'active' %> "><%= data.nama %></button>
+                <% }) %>
+            </div>
+            <div class="col-span-2 loket-tab-wrapper py-12">
+                <% kategoris.forEach((kategori, i) => { %>
+                <div class="card card-antrian <%= i != 0 && 'hidden'  %> h-full overflow-hidden relative">
+                    <div class="loket text-base-content/90" id="loket_<%= kategori.id %>">
+                        <p class="text-5xl font-bold mb-16 layanan-text text-<%= sistemClass[i] %>"><%= kategori.nama %></p>
+                        <% if(kategori.layanans.length == 1){ %> 
+                            <div class="grid grid-cols-6 gap-10 mb-10">
+                                <div class="col-span-2 p-10 rounded-box">
+                                    <div class="flex flex-col items-center ">
+                                        <img src="/public_template/img/loket.svg" alt="" class="img-res-1 mb-6">
+                                        <% const thisLayanan = kategori.layanans[0].toJSON() %>
+                                        <p class="layanan-text whitespace-nowrap font-semibold"><%= thisLayanan.jumlahLoket %> Loket</p>
+                                    </div>
+                                </div> 
+                                <div class="col-span-4 p-10 rounded-box border-4 border-<%= sistemClass[i] %>/20 relative z-10 overflow-hidden">
+                                    <div class="w-80 h-80 absolute bottom-0 right-0 rounded-full bg-<%= sistemClass[i] %>/20 -mb-40 -mr-24">
+                                    </div>
+                                    <div class="flex items-start">
+                                        <img src="/public_template/img/layanan1.svg" alt="" class="img-res-2 mt-2">
+                                        <div class="ml-10 w-full flex-grow">
+                                            <p class="font-semibold mb-4 desc-text text-title">Pelayanan:</p>
+                                            <div class="overflow-y-auto h-28">
+                                                <p class="m-0 desc-text"><%- nl2br(kategori.keterangan) %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-wrapper relative h-32 flex items-center justify-center">
+                                <button class="tiket-button btn btn-<%= sistemClass[i] %> h-fit w-fit p-8 px-16" data-id="<%= thisLayanan.id %>" data-layanan="<%= thisLayanan.nama %>">
+                                    <p class="text-white mb-0 flex items-center">
+                                        <img src="/public_template/img/printer.svg" class="inline img-btn mr-4" />
+                                        Ambil Tiket
+                                    </p>
+                                </button>
+                                <div class="line w-full h-1 bg-slate-200 absolute top-0 left-0 mt-16"></div>
+                            </div>
+                        <% }else{ %>
+                            <div class="w-full grid grid-cols-<%= kategori.layanans.length %> gap-12">
+                                <% kategori.layanans.forEach( layanan => { %> 
+                                    <div class="card items-center shadow-lg gap-12">
+                                        <div class="sublayanan-text w-full h-48 flex items-center justify-center font-medium text-neutral/80 bg-<%= sistemClass[i] %>/20 text-center p-8"><%= layanan.nama %></div>
+                                        <div class="flex flex-col items-center mb-6">
+                                            <div class="img-res-1">
+                                                <img src="/public_template/img/loket.svg" class="w-full p-4">
+                                            </div>
+                                            <% const thisLayanan = layanan.toJSON() %>
+                                            <p class="sublayanan-text whitespace-nowrap font-semibold"><%= thisLayanan.jumlahLoket %> LOKET</p>
+                                        </div>
+                                        <div class="w-full p-12 pt-0">
+                                            <button class="tiket-button btn btn-<%= sistemClass[i] %> h-fit w-full p-8 px-16" data-id="<%= thisLayanan.id %>" data-layanan="<%= thisLayanan.nama %>">
+                                                <p class="text-white mb-0 flex items-center">
+                                                    <img src="/public_template/img/printer.svg" class="inline img-btn mr-4" />
+                                                    Ambil Tiket
+                                                </p>
+                                            </button>
+                                        </div>
+                                    </div>
+                                <% }) %> 
+                            </div>
+                        <% } %> 
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+            <div class="btn-primary btn-info btn-success btn-secondary btn-warning text-info text-success text-secondary text-warning border-info/20 border-success/20 border-secondary/20 border-warning/20 bg-info/20 bg-success/20 bg-secondary/20 bg-warning/20 hidden"></div>
+        </div>
+</main>
+<div class="w-[300px] h-[300px] border border-neutral hidden p-2 print:block">
+    <div class="flex mb-2 justify-between">
+        <small>Jambi, <span id="datePrint"></span></small>
+        <small id="timePrint"> - </small>
+    </div>
+    <img src="/admin_template/dist/assets/images/mini-logo.png" alt="" class="h-12 mx-auto mb-2" />
+    <h1 class="text-md font-semibold text-center mb-2">Dinas Kependudukan dan Pencatatan Sipil Kota Jambi</h1>
+    <p class="font-bold text-center text-5xl" id="noAntrianPrint">A-19</p>
+    <p class="text-center font-semibold italic h-16">
+        PELAYANAN :
+        <span id="layananPrint">DAFDUK</span>
+    </p>
+    <p class="text-2xs">
+        Budayakan antri untuk kenyamanan bersama.
+        <br />
+        Terimakasih atas kunjungannya
+    </p>
+</div>
+<%- include('./part/footer.ejs') %>

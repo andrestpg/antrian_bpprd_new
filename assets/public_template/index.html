@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Popup form</title>
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <!--    font-awesome -->
+  <link rel="stylesheet" href="assets/css/font-awesome.css">
+  <!-- style -->
+  <link href="style.css" rel="stylesheet">
+  <!-- google fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,500i,700,700i,900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,600">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700" >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600">
+
+</head>
+<body>
+
+<!--==================================
+=            MAIN SECTION            =
+===================================-->
+<div class="temp-popup-form-wrapper">
+<!--========================================
+=            navigation section            =
+=========================================-->
+<nav class="navbar navbar-inverse temp-custom-navigation">
+  <div class="container-fluid">
+    <div class="navbar-header temp-custom-logo-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">POPUP FORM</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right temp-custom-list-items">
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#RegistrationModal">REGISTRATION</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#LogInModal">LOGIN</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#ContactModal">CONTACT</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#PaymentModal">PAYMENT</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#ReviewModal">REVIEW</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#SubscribeModal">SUBSCRIBE</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#ForgotModal">FORGOT</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#ResetModal">RESET</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--====  End of navigation section  ====-->
+
+<div class="temp-content-wrapper">
+  <div class="container">
+    <h1>Bootstrap popup form layouts</h1>
+    <p>Enjoy eight different forms using bootstap</p>
+  </div>
+<!--=====================================
+=            SETTING SECTION            =
+======================================-->
+
+<div class="temp-change-setting-wrap">
+  <img src="assets/images/setting.png" alt="setting" class="temp-setting">
+  <div class="temp-setting-wrapper">
+    <div class="temp-font-family">
+      <p>Font-family</p>
+      <ul class="temp-main-font-family-list">
+        <li class="temp-font-menu" >
+          <span id="temp-menu">Select font</span>
+          <span class="temp-icon">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </span>
+          <ul class="temp-font-submenu-list">
+            <li data-font="'Roboto', sans-serif" class="temp-list">
+              <a href="#">Roboto</a>
+            </li>
+            <li data-font="'Merriweather', serif" class="temp-list">
+              <a href="#">Merriweather</a>
+            </li>
+            <li data-font="'PT Sans', sans-serif" class="temp-list">
+              <a href="#">PT Sans</a>
+            </li>
+            <li data-font="'Open Sans', sans-serif" class="temp-list">
+              <a href="#">Source Sans Pro</a>
+            </li>
+            <li data-font="'Poppins', sans-serif" class="temp-list">
+              <a href="#">Poppins</a>
+            </li>
+            <li data-font="'Lato', sans-serif" class="temp-list">
+              <a href="#">Lato</a> 
+            </li>
+            <li data-font="'Raleway', sans-serif" class="temp-list">
+              <a href="#">Raleway</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- end -->
+    <!-- color-change setting -->
+    <div class="temp-color-setting">
+      <p>Color</p>
+      <div class="row">
+        <div class="col-sm-8">
+          <label class="radio-inline temp-custom-radio-button">
+            <input type="radio" name="color" id="set1Radio" value="set1" class="temp-color-radio-btn" data-color1="#2E3353" data-color2="#889cb7">Color one
+            <span class="temp-radio-checkmark" data-link_design="1"></span>
+          </label>
+          <div class="temp-color-box-wrap">
+            <span class="temp-color-box color1"></span>
+            <span class="temp-color-box color2"></span>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <label class="radio-inline temp-custom-radio-button">
+            <input type="radio" name="color" id="set2Radio" value="set2" class="temp-color-radio-btn" data-color1="#2d5c67" data-color2="#75B0C2" >Color two
+            <span class="temp-radio-checkmark" data-link_design="2"></span>
+          </label>
+          <div class="temp-color-box-wrap">
+            <span class="temp-color-box color3" ></span>
+            <span class="temp-color-box color4" ></span>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <label class="radio-inline temp-custom-radio-button">
+            <input type="radio" name="color" id="set3Radio" value="set3" class="temp-color-radio-btn" data-color1="#AB7B39" data-color2="#C9BA9D">Color three
+            <span class="temp-radio-checkmark" data-link_design="3"></span>
+          </label>
+          <div class="temp-color-box-wrap">
+            <span class="temp-color-box color5" ></span>
+            <span class="temp-color-box color6" ></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+    <!-- background image setting -->
+    <div class="temp-background-image-setting temp-color-setting">
+      <p>Background Image</p>
+      <div class="row">
+        <div class="col-sm-8">
+          <label class="radio-inline temp-custom-radio-button">
+            <input type="radio" name="color" id="img1Radio" value="set1" class="temp-image-radio-btn" data-image1=url(assets/images/banner2.jpg)>Image One
+            <span class="temp-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="col-sm-8">
+          <label class="radio-inline temp-custom-radio-button">
+            <input type="radio" name="color" id="img2Radio" value="set2" class="temp-image-radio-btn" data-image1=url(assets/images/banner3.jpg)>Image Two
+            <span class="temp-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="col-sm-8">
+          <label class="radio-inline temp-custom-radio-button">
+            <input type="radio" name="color" id="img3Radio" value="set3" class="temp-image-radio-btn" data-image1=url(assets/images/banner4.jpg)>Image three
+            <span class="temp-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--====  End of SETTING SECTION  ====-->
+</div>
+
+
+<!--====  End of MAIN SECTION  ====-->
+
+
+ <!--======================================
+ =            registration form modal            =
+ =======================================-->
+ <!-- Modal -->
+ <div class="modal fade" id="RegistrationModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class="temp-reg-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Sign Up</h2>
+                    <p>If user doesn't have there account then, Create your account by filling the given entries.</p>
+                    <p class="temp-heading-for-icon temp-reg-para">Login with social media</p>
+                    <div class="temp-anchor-wrap temp-reg-anchor-wrap">
+                      <a href="#" class=" temp-anchor text-left">
+                        <span class="temp-social-icon-wrap">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </span>
+                        <span>Sign in with facebook</span>
+                      </a>
+                      <a href="#" class="temp-anchor temp-icon-color text-left">
+                        <span class="temp-social-icon-wrap">
+                          <i class="fa fa-google" aria-hidden="true"></i>
+                        </span>
+                        <span>Sign in with google</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Register</h2>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">First name</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Email</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="password"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Password</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="password" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Confirm password</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Phone number</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <label class="radio-inline temp-custom-radio-button">
+                                <input type="radio" name="gender" id="femaleRadio" value="Female">Female
+                                <span class="temp-radio-checkmark"></span>
+                              </label>
+                            </div>
+                            <div class="col-sm-3">
+                              <label class="radio-inline temp-custom-radio-button">
+                                <input type="radio" name="gender" id="maleRadio" value="Male">Male
+                                <span class="temp-radio-checkmark"></span>
+                              </label>
+                            </div>
+                            <div class="col-sm-4">
+                              <label class="radio-inline temp-custom-radio-button">
+                                <input type="radio" name="gender" id="uncknownRadio" value="Unknown">Unknown
+                                <span class="temp-radio-checkmark"></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Register</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+<!--====  End of registration form modal  ====-->
+
+<!--======================================
+=            login form modal            =
+=======================================-->
+<!-- Modal -->
+<div class="modal fade" id="LogInModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class="temp-login-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Sign In</h2>
+                    <p>If you have account then login. otherwise firstly create your account.</p>
+                    <p class="temp-heading-for-icon">Login with social media</p>
+                    <div class="temp-anchor-wrap temp-reg-anchor-wrap">
+                      <a href="#" class=" temp-anchor text-left">
+                        <span class="temp-social-icon-wrap">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </span>
+                        <span>Sign in with facebook</span>
+                      </a>
+                      <a href="#" class="temp-anchor temp-icon-color text-left">
+                        <span class="temp-social-icon-wrap">
+                          <i class="fa fa-google" aria-hidden="true"></i>
+                        </span>
+                        <span>Sign in with google</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Login</h2>
+                  <form>
+                    <div class="form-group">
+                      <span class="temp-span-wrap temp-span-input-label-wrap">
+                        <input class="temp_input_field" type="text"  >
+                        <label class="temp_input_label">
+                          <span class="temp_input_label-content">Email</span>
+                        </label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <span class="temp-span-wrap temp-span-input-label-wrap">
+                        <input class="temp_input_field" type="password"  >
+                        <label class="temp_input_label">
+                          <span class="temp_input_label-content">Password</span>
+                        </label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label class="temp-checkbox-wrap">
+                        <input name="signup_agree_checkbox" value="1" type="checkbox">
+                        Remember me
+                        <span class="checkmark"></span> 
+                      </label>
+                      <label class="pull-right label-content-color custom-form-label2"> 
+                        <a href="#">Forget password?</a>
+                      </label>
+                    </div>
+                    <div class="temp-login-button-wrap">
+                      <button class="btn btn-info temp-form-button" type="button">Login</button>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of login form modal  ====-->
+
+<!--==================================
+=            contact form            =
+===================================-->
+<!-- Modal -->
+<div class="modal fade" id="ContactModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class=" temp-contact-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Get In Touch</h2>
+                    <p>If you have any question , please feel free to drop me a line. Just fill the entries that are given and press the button.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Contact</h2>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">First Name</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Last Name</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Subject</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Email</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <textarea class="temp_input_field temp_textarea_field"></textarea>
+                            <label class="temp_input_label temp-textarea-label">
+                              <span class="temp_input_label-content">Message</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Send message</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of contact form  ====-->
+<!--=====================================
+=            payment section            =
+======================================-->
+<!-- Modal -->
+<div class="modal fade" id="PaymentModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class=" temp-payment-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Get In Touch</h2>
+                    <p>If you have any question , please feel free to drop me a line. Just fill the entries that are given and press the button.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Payment Invoice</h2>
+                  <p>Please provide the billing & payment info below</p>
+                  <img src="assets/images/payment.jpg" alt="background-image" class="img-responsive">
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">$ Payment Amount</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Holder's Name</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <select class="form-control temp-custom-select">
+                          <option disabled="" selected=""> Card Type</option>
+                          <option value="MasterCard"> MasterCard</option>
+                          <option value="Visa"> Visa</option>
+                          <option value="America Express"> America Express</option>
+                          <option value="Discover"> Discover</option>
+                          <option value="Other"> Other</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <select class="form-control temp-custom-select">
+                          <option disabled="" selected="">Month</option>
+                          <option value="1"> 1 </option>
+                          <option value="2"> 2 </option>
+                          <option value="3"> 3 </option>
+                          <option value="4"> 4 </option>
+                          <option value="5"> 5 </option>
+                          <option value="6"> 6 </option>
+                          <option value="7"> 7 </option>
+                          <option value="8"> 8 </option>
+                          <option value="9"> 9 </option>
+                          <option value="10"> 10 </option>
+                          <option value="11"> 11 </option>
+                          <option value="12"> 12 </option>
+                        </select>
+                      </div>
+                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <select class="form-control temp-custom-select">
+                          <option disabled="" selected="">Year</option>
+                          <option value="2017"> 2017 </option>
+                          <option value="2018"> 2018 </option>
+                          <option value="2019"> 2019 </option>
+                          <option value="2020"> 2020 </option>
+                          <option value="2021"> 2021 </option>
+                          <option value="2022"> 2022 </option>
+                          <option value="2023"> 2023 </option>
+                          <option value="2024"> 2024 </option>
+                          <option value="2025"> 2025 </option>
+                          <option value="2026"> 2026 </option>
+                          <option value="2027"> 2027 </option>
+                        </select>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">CVV</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Card Number</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Place order</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of payment section  ====-->
+<!--====================================
+=            review section            =
+=====================================-->
+<!-- Modal -->
+<div class="modal fade" id="ReviewModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row row-eq-height">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class=" temp-review-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Write a Review</h2>
+                    <p>We'd love to hear more from our visitors. Your feedback will help us to undestand what we do well and where we can improve.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Review</h2>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">User Name</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="text"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Email</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <textarea class="temp_input_field temp_textarea_field" ></textarea>
+                            <label class="temp_input_label temp-textarea-label">
+                              <span class="temp_input_label-content">Your comments</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Send Review</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of review section  ====-->
+<!--====================================
+=            subscribe form            =
+=====================================-->
+<!-- Modal -->
+<div class="modal fade" id="SubscribeModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row row-eq-height">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image ">
+                <div class="temp-subscribe-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Hello world</h2>
+                    <p>Join our newsletter and get news in your inbox every week!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap temp-subscribe-form-column-wrap">
+                  <h2>Subscribe</h2>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Email</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label class="radio-inline temp-custom-radio-button temp-radio-button-subscribe">
+                            <input type="radio" name="category" id="travelRadio" value="Travel"> Travel
+                            <span class="temp-radio-checkmark"></span>
+                          </label>
+                          <label class="radio-inline temp-custom-radio-button temp-radio-button-subscribe">
+                            <input type="radio" name="category" id="MagazineRadio" value="Magazine">Magazine
+                            <span class="temp-radio-checkmark"></span>
+                          </label>
+                          <label class="radio-inline temp-custom-radio-button temp-radio-button-subscribe">
+                            <input type="radio" name="category" id="Checked-OptionRadio" value="Checked Option">Checked Option
+                            <span class="temp-radio-checkmark"></span>
+                          </label>
+                          <label class="radio-inline temp-custom-radio-button temp-radio-button-subscribe">
+                            <input type="radio" name="category" id="Disabled-OptionRadio" value="Disabled Option">Disabled Option
+                            <span class="temp-radio-checkmark"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                          <label class="temp-checkbox-wrap temp-subscribe-checkbox">
+                            <input name="signup_agree_checkbox" value="1" type="checkbox">
+                            Chefs' Kitchen
+                            <span class="checkmark"></span> 
+                          </label>
+                          <label class="temp-checkbox-wrap temp-subscribe-checkbox">
+                            <input name="signup_agree_checkbox" value="1" type="checkbox">
+                            Healing Flavors
+                            <span class="checkmark"></span> 
+                          </label>
+                          <label class="temp-checkbox-wrap temp-subscribe-checkbox">
+                            <input name="signup_agree_checkbox" value="1" type="checkbox">
+                            Checked Option
+                            <span class="checkmark"></span> 
+                          </label>
+                          <label class="temp-checkbox-wrap temp-subscribe-checkbox">
+                            <input name="signup_agree_checkbox" value="1" type="checkbox">
+                            Disabled Option
+                            <span class="checkmark"></span> 
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of subscribe form  ====-->
+<!--==========================================
+=            forget password form            =
+===========================================-->
+<!-- Modal -->
+<div class="modal fade" id="ForgotModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class=" temp-forget-password-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>forgot your password?</h2>
+                    <p>
+                      Please provide the username or email address that you used when you signed up for your account.
+                      We will send you an email that will allow you to reset your password.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Forgot Password?</h2>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input  class="temp_input_field" type="text" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Email</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Send Mail</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of forget password form  ====-->
+<!--========================================
+=            reset form section            =
+=========================================-->
+<!-- Modal -->
+<div class="modal fade" id="ResetModal" role="dialog">
+  <div class="temp-custom-modal-wrap">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content temp-custom-modal-content">
+        <button type="button" class="close temp-custom-close-button" data-dismiss="modal">&times;</button>
+        <div class="modal-body temp-custom-modal-body">
+          <div class="temp-login-form-wrapper">
+            <div class="row custom-row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 temp-form-column-wrap-image">
+                <div class=" temp-reset-password-column-wrap-image">
+                  <div class="temp-form-inner-wrapper">
+                    <h2>Reset your password</h2>
+                    <p>You can change your password just by filling the given entries and set new password</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="temp-form-column-wrap">
+                  <h2>Change Password</h2>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="password"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Current Password</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="password" >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">New Password</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <span class="temp-span-wrap temp-span-input-label-wrap">
+                            <input class="temp_input_field" type="password"  >
+                            <label class="temp_input_label">
+                              <span class="temp_input_label-content">Confirm New password</span>
+                            </label>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="temp-login-button-wrap">
+                          <button class="btn btn-info temp-form-button" type="button">Reset password</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--====  End of reset form section  ====-->
+<!--====  End of content of popup form  ====-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="assets/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="assets/js/bootstrap.js"></script>
+<!-- custom js link -->
+<script src="assets/js/form.js"></script>
+
+<script type="text/javascript">
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  document.onkeydown = function(e) {
+    if (e.ctrlKey && 
+      (e.keyCode === 67 || 
+       e.keyCode === 86 || 
+       e.keyCode === 85 || 
+       e.keyCode === 117)) {
+      
+      return false;
+  } else {
+    return true;
+  }
+};
+</script>
+
+</body>
+</html>

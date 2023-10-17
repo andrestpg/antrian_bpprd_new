@@ -1,0 +1,154 @@
+
+body{
+    color: #5a6670;
+    background-color: #e0e5ec;
+    overflow: hidden;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 3rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.img-header{
+    height: 4rem;
+}
+
+p.text-header{
+    display: inline-block;
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+main{
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+main h1{
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+main .container{
+    padding: 3rem 2rem 1rem 2rem;
+}
+
+.loket-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+}
+
+.col-lg-2{
+    margin: 0 1rem 4rem 1rem;
+}
+
+.loket{
+    height: 0;
+    overflow: hidden;
+    border-radius: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-basis: 28%;
+    position: relative;
+    background-color: #e0e5ec;
+}
+
+.loket-name{
+    margin-bottom: .6rem;
+    color: inherit !important;
+}
+
+.loket-numb{
+    font-size: 4rem !important;
+    color: #F05454;
+}
+
+.antrian-button{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    display: flex;
+    box-sizing: border-box !important;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: none;
+    color: #ffffff;
+}
+.spinner-grow{
+    width: 3rem;
+    height: 3rem;
+}
+.neu-shadow{
+    box-shadow:  1rem 1.2rem 2.2rem #a3b1c6,
+                -1rem -1.2rem 2.2rem #ffffff;
+}
+
+footer{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-wrapper{
+    width: 300px;
+    border-radius: 1.2rem;
+    background-color: rgb(255,255,255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow:  0 .2rem 2.2rem #a3b1c6;
+    padding: 3rem 1rem;
+}
+
+.bg-siko{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30vw;
+    height: auto;
+    background-color: transparent;
+}
+
+.bg-siko>img{
+    opacity: .5;
+}
+
+/* @media (min-width: 1000px){
+    .col-lg-2{
+        padding: 0 3.5rem;
+    }
+} */

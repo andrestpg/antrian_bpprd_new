@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+    <head>
+        <title><%= title %></title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/public_template/img/icon.png" type="image/x-icon" />
+        <link rel="icon" type="image/png" href="/public_template/img/favicon.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/public_template/img/favicon.png" />
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/public_template/dist/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.css" integrity="sha512-zrPsLVYkdDha4rbMGgk9892aIBPeXti7W77FwOuOBV85bhRYi9Gh+gK+GWJzrUnaCiIEm7YfXOxW8rzYyTuI1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script>
+            const baseUrl = "<% process.env.BASE_URL %>";
+            // if (window.location.href.substr(0, 5) !== "https") {
+            //     window.location.href = window.location.href.replace("http", "https");
+            // }
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-title-wrapper">
+                <h1 class="text-4xl font-semibold text-center text-white mb-4"><%= title %></h1>
+            </div>
+            <div class="instansi-wrapper">
+                <img src="/public_template/img/icon.png" class="h-12 drop-shadow-xl" />
+                <img src="/public_template/img/capil.png" class="h-10 ml-4 drop-shadow-xl" />
+                <img src="/public_template/img/kominfo.png" class="h-8 ml-4 mt-2 drop-shadow-xl" />
+            </div>
+        </header>
+    </body>
+</html>

@@ -1,0 +1,177 @@
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="alert alert-warning err-message" role="alert">
+                        <strong>Error</strong>
+                    </div>
+                    <form action="#" id="userForm" method="post">
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                            <div class="invalid-feedback">
+                                Nama tidak valid!
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username"
+                                placeholder="Username">
+                            <div class="invalid-feedback">
+                                Username tidak valid!
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="role1" name="role"
+                                    class="custom-control-input" value="0" checked>
+                                <label class="custom-control-label" for="role1">Staff</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="role2" name="role"
+                                    class="custom-control-input" value="1" >
+                                <label class="custom-control-label" for="role2">Admin</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="password1">Password</label>
+                                    <input type="password" class="form-control" name="password1" id="password1"
+                                        placeholder="Password">
+                                    <div class="invalid-feedback">
+                                        Password harus sama dengan konfirmasi password
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="password2">Confirm Password</label>
+                                    <input type="password" class="form-control" name="password2" id="password2"
+                                        placeholder="Confirm Password">
+                                    <div class="invalid-feedback">
+                                        Password harus sama dengan konfirmasi password
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button
+                                class="btn btn-primary btn-block waves-effect waves-light d-flex justify-content-center align-items-center"
+                                type="submit" style="width:fit-content;">
+                                <div class="loader-wrapper hide">
+                                    <div class="loader"></div>
+                                </div>
+                                <span class="mx-2">Submit</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="alert alert-warning err-message" role="alert">
+                        <strong>Error</strong>
+                    </div>
+                    <form action="#" id="userEditForm" method="post" data-id="0">
+                        <input type="hidden" id="editId" value="">
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="nameEdit">Name</label>
+                            <input type="text" class="form-control" name="nameEdit" id="nameEdit" placeholder="Name">
+                            <div class="invalid-feedback">
+                                Nama tidak valid!<br>
+                                <span class="font-italic font-weight-bold text-secondary">Nama tidak boleh mengandung
+                                    karakter spesial (symbol)</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="usernameEdit">Username</label>
+                            <input type="text" class="form-control" name="usernameEdit" id="usernameEdit"
+                                placeholder="Username">
+                            <div class="invalid-feedback">
+                                Username tidak valid!<br>
+                                <span class="font-italic font-weight-bold text-secondary">Nama tidak boleh mengandung
+                                    karakter spesial (symbol)</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="roleEdit1" name="roleEdit"
+                                    class="custom-control-input" value="0" checked>
+                                <label class="custom-control-label" for="roleEdit1">Staff</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="roleEdit2" name="roleEdit"
+                                    class="custom-control-input" value="1" >
+                                <label class="custom-control-label" for="roleEdit2">Admin</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="password1Edit">Password</label>
+                                    <input type="password" class="form-control" name="password1Edit" id="password1Edit"
+                                        placeholder="Password">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid password.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="password2Edit">Confirm Password</label>
+                                    <input type="password" class="form-control" name="password2Edit" id="password2Edit"
+                                        placeholder="Confirm Password">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid password confirmation.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button
+                                class="btn btn-primary btn-block waves-effect waves-light d-flex justify-content-center align-items-center"
+                                type="submit" style="width:fit-content;">
+                                <div class="loader-wrapper hide">
+                                    <div class="loader"></div>
+                                </div>
+                                <span class="mx-2">Submit</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

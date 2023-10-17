@@ -1,0 +1,29 @@
+<%- include('../template/header.ejs') %>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-between mb-3">
+                            <div class="col-6">
+                                <h4 class="header-title d-inline"><%= title %></h4>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="#" class="btn btn-sm btn-danger btn-rounded mb-1 waves-effect waves-light px-2"  data-toggle="modal" data-target="#modelId">Tambah Layanan</a>
+                                <a href="#" class="btn btn-icon rounded-circle ml-2 py-0 px-0 no-shadow" id="reload"><i class="mdi mdi-reload mdi-24px"></i></a>
+                            </div>
+                        </div>
+                        <div class="table-rep-plugin float-none" id="targetContent">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div>
+    <!-- end container-fluid -->
+</div>
+
+<%- include('./modal.ejs') %>
+<%- include('../template/footer.ejs') %>
