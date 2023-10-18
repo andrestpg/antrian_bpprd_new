@@ -21,13 +21,15 @@
                         <div class="w-full h-full pt-12 grid grid-cols-2 gap-8 px-6">
                             <% lokets.forEach(loket => { %> 
                                 <!-- loket -->
-                                <div class="w-full h-fit grid grid-cols-5 border-b-4 border-red-600 loket<%= loket.id %>" data-numb="<%= loket.noLoket %>">
-                                    <div class="col-span-3 flex flex-col items-center py-2 px-4 bg-error font-bold">
-                                        <p class="text-2xl w-full block text-left text-white">LOKET <%= loket.noLoket %> </p>
-                                        <p class="whitespace-nowrap w-full block text-right text-yellow-200"><%= loket.layanan.nama %> </p>
-                                    </div>
-                                    <div class="col-span-2 flex items-center justify-center py-2">
-                                        <p class="text-4xl pl-4 font-bold text-red-700 loket-numb whitespace-nowrap"><%= loket.layanan.kodeAntrian +'-'+ loket.lastAntrian %> </p>
+                                <div class="w-ful h-full flex items-center">
+                                    <div class="w-full h-fit grid grid-cols-5 border-b-4 border-error loket<%= loket.id %>" data-numb="<%= loket.noLoket %>">
+                                        <div class="col-span-3 flex flex-col items-center py-2 px-4 bg-error font-bold">
+                                            <p class="text-3xl w-full block text-left text-white">LOKET <%= loket.noLoket %> </p>
+                                            <p class="text-2xl whitespace-nowrap w-full block text-right text-yellow-200"><%= loket.layanan.nama %> </p>
+                                        </div>
+                                        <div class="col-span-2 flex items-center justify-center py-2">
+                                            <p class="text-5xl pl-4 font-bold text-error loket-numb whitespace-nowrap"><%= loket.layanan.kodeAntrian +'-'+ loket.lastAntrian %> </p>
+                                        </div>
                                     </div>
                                 </div>
                             <% }); %>
@@ -43,13 +45,15 @@
                         <div class="w-full h-full grid grid-cols-3 gap-12 pl-4 pt-4 pr-12">
                             <% banks.forEach(loket => { %> 
                                 <!-- loket -->
-                                <div class="w-full h-fit grid grid-cols-5 border-b-4 border-red-600 loket<%= loket.id %>" data-numb="<%= loket.noLoket %>">
-                                    <div class="col-span-3 flex flex-col items-center py-2 px-4 bg-error font-bold">
-                                        <p class="text-2xl w-full block text-left text-white">LOKET <%= loket.noLoket %> </p>
-                                        <p class="whitespace-nowrap w-full block text-right text-yellow-200"><%= loket.layanan.nama %> </p>
-                                    </div>
-                                    <div class="col-span-2 flex items-center justify-center py-2">
-                                        <p class="text-4xl pl-4 font-bold text-red-700 loket-numb whitespace-nowrap"><%= loket.layanan.kodeAntrian +'-'+ loket.lastAntrian %> </p>
+                                <div class="w-ful h-full flex items-center">
+                                    <div class="w-full h-fit grid grid-cols-5 border-b-4 border-error loket<%= loket.id %>" data-numb="<%= loket.noLoket %>">
+                                        <div class="col-span-3 flex flex-col items-center py-2 px-4 bg-error font-bold">
+                                            <p class="text-3xl w-full block text-left text-white">LOKET <%= loket.noLoket %> </p>
+                                            <p class="text-2xl whitespace-nowrap w-full block text-right text-yellow-200"><%= loket.layanan.nama %> </p>
+                                        </div>
+                                        <div class="col-span-2 flex items-center justify-center py-2">
+                                            <p class="text-5xl pl-4 font-bold text-error loket-numb whitespace-nowrap"><%= loket.layanan.kodeAntrian +'-'+ loket.lastAntrian %> </p>
+                                        </div>
                                     </div>
                                 </div>
                             <% }); %>
@@ -63,12 +67,12 @@
         <input type="checkbox" id="modalToggle" class="modal-toggle" />
         <div class="modal backdrop-blur-sm">
             <div class="modal-box modal-box-shadow max-w-[50%] relative overflow-hidden p-0">
-                <div class="w-40 h-40 absolute top-0 left-0 rounded-full bg-primary/20 -mt-8 ml-[10%] rotate-[130deg]"></div>
-                <div class="w-60 h-60 absolute bottom-0 left-0 rounded-full bg-primary/20 -mb-24 ml-[30%] rotate-[130deg]"></div>
+                <div class="w-40 h-40 absolute top-0 left-0 rounded-full bg-error/20 -mt-8 ml-[10%] rotate-[130deg]"></div>
+                <div class="w-60 h-60 absolute bottom-0 left-0 rounded-full bg-error/20 -mb-24 ml-[30%] rotate-[130deg]"></div>
                 <div class="w-80 h-40 absolute top-0 right-0 rounded-full bg-success/20 mt-20 -mr-10 rotate-[130deg]"></div>
                 <div class="w-32 h-32 absolute top-0 right-0 rounded-box bg-success/20 -mt-12 mr-[40%] rotate-45"></div>
                 <div class="flex gap-10 items-center py-16 backdrop-blur-lg justify-center text-base-content/90 inset-white">
-                    <div class="svg-wrapper p-12 ml-4 rounded-full bg-primary/80 shadow-lg mr-4">
+                    <div class="svg-wrapper p-12 ml-4 rounded-full bg-error/80 shadow-lg mr-4">
                         <svg width="100px" class="talk fill-white" id="megaphoneSVG" data-name="megaphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508.21 488.3">
                             <path d="M137,322.23a10,10,0,1,0-13.66-3.66A10,10,0,0,0,137,322.23Z" transform="translate(0 -10.19)" />
                             <path d="M96,391.25l50.36,87.23a40,40,0,1,0,69.28-40l-30-52,26-15a10,10,0,0,0,3.66-13.66l-13-22.52L393.8,297.77a30,30,0,0,0,24.32-44.95l-33.23-57.56,21.24-32.17a10,10,0,0,0,.32-10.51l-20-34.64a10,10,0,0,0-9.26-5l-38.47,2.31L301.81,51.36a29.74,29.74,0,0,0-25.61-15h-.38a29.74,29.74,0,0,0-25.26,13.83L119.93,216.6,35,265.63A70,70,0,0,0,96,391.25Zm102.32,57.24a20,20,0,0,1-34.64,20l-50-86.61,34.64-20Zm-22.68-79.3-10-17.32,17.32-10,10,17.32ZM372.21,133.29,386,157.22,373.7,175.89l-23.82-41.26ZM267.29,61.15a10,10,0,0,1,17.2.2L400.8,262.82a10,10,0,0,1-8.41,15c-1.36,0-2,.28-5.48.93l-123-213.11C266.45,62.31,266.78,62,267.29,61.15ZM250.55,82.59l115.6,200.22L191.69,317l-53-91.88ZM26.7,351.25A50,50,0,0,1,45,283l77.94-45,50,86.6L95,369.56A50.06,50.06,0,0,1,26.7,351.25Z" transform="translate(0 -10.19)" />
@@ -80,12 +84,12 @@
                     </div>
                     <div class="flex flex-col items-center">
                         <p class="text-2xl font-semibold italic whitespace-nowrap mb-4">No Antrian</p>
-                        <p class="text-6xl text-primary font-bold whitespace-nowrap noantrian-modal">-</p>
+                        <p class="text-6xl text-error font-bold whitespace-nowrap noantrian-modal">-</p>
                     </div>
                     <img src="/public_template/img/arrow-right.svg" alt="" class="w-24 pl-4" />
                     <div class="flex flex-col items-center px-10">
                         <p class="text-2xl font-semibold italic mb-4">Loket</p>
-                        <p class="text-6xl text-primary font-bold noloket-modal">1</p>
+                        <p class="text-6xl text-error font-bold noloket-modal">1</p>
                     </div>
                 </div>
             </div>
@@ -99,7 +103,7 @@
     </div>
 </main>
 <div class="hidden">
-    <div class="gap-16"></div>
+    <div class="gap-16 btn-error"></div>
     <div class="gap-14"></div>
 </div>
 <%- include('./part/footer.ejs') %>

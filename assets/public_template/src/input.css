@@ -25,11 +25,11 @@
         @apply h-[75vh] w-full grid grid-cols-3 px-20 py-10 relative z-10 overflow-hidden;
     }
 
-    .loket {
+    /* .loket {
         @apply relative z-10 rounded-md
          before:absolute before:-left-4 before:bottom-0 before:rounded-l-lg before:w-4 before:h-[calc(100%+.7rem)] before:bg-error 
          after:absolute after:-left-[.7rem] after:-top-[.6rem] after:rounded-l-full after:w-[.7rem] after:h-[.65rem] after:bg-error after:brightness-75 
-    }
+    } */
 
     .loket {
         @apply relative z-10;
@@ -40,7 +40,7 @@
     }
 
     .loket-menu-button {
-        @apply loket-menu-text rounded-full block w-60 md:w-[90%] uppercase text-white mb-8 p-10 h-fit font-bold btn-shadow;
+        @apply loket-menu-text rounded-full block w-60 md:w-[90%] uppercase text-white mb-8 p-6 h-fit font-bold btn-shadow;
     }
 
     .loket-menu-button.active {
@@ -173,7 +173,7 @@
     }
 
     .loket-menu-text{
-        font-size: calc(.6rem + 1vw)
+        font-size: calc(.4rem + 1vw)
     }
 
     .desc-text{

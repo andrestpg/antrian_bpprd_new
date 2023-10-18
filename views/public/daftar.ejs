@@ -1,5 +1,5 @@
-<%- include('./part/header-grid.ejs') %> <% const sistemClass = ['warning', 'info', 'success', 'secondary', 'warning'] %>
-<main class="main-content print:hidden">
+<%- include('./part/header-grid.ejs') %> <% const sistemClass = ['info', 'info', 'info', 'info', 'info'] %>
+<main class="main-content h-[80vh] print:hidden">
         <div class="loket-wrapper">
             <div class="loket-menu-wrapper p-12">
                 <p class="text-2xl text-base-content/80 font-semibold mb-8 ml-2">Pilih Layanan:</p>
@@ -29,7 +29,7 @@
                                         <div class="ml-10 w-full flex-grow">
                                             <p class="font-semibold mb-4 desc-text text-title">Pelayanan:</p>
                                             <div class="overflow-y-auto h-28">
-                                                <p class="m-0 desc-text"><%- nl2br(kategori.keterangan) %></p>
+                                                <p class="m-0 desc-text">-</p>
                                             </div>
                                         </div>
                                     </div>
@@ -47,17 +47,17 @@
                         <% }else{ %>
                             <div class="w-full grid grid-cols-<%= kategori.layanans.length %> gap-12">
                                 <% kategori.layanans.forEach( layanan => { %> 
-                                    <div class="card items-center shadow-lg gap-12">
-                                        <div class="sublayanan-text w-full h-48 flex items-center justify-center font-medium text-neutral/80 bg-<%= sistemClass[i] %>/20 text-center p-8"><%= layanan.nama %></div>
+                                    <div class="card items-center shadow-lg gap-4">
+                                        <div class="text-2xl w-full h-24 flex items-center justify-center font-medium text-neutral/80 bg-<%= sistemClass[i] %>/20 text-center p-8"><%= layanan.nama %></div>
                                         <div class="flex flex-col items-center mb-6">
-                                            <div class="img-res-1">
-                                                <img src="/public_template/img/loket.svg" class="w-full p-4">
+                                            <div class="w-24">
+                                                <img src="/public_template/img/loket.svg" class="w-full">
                                             </div>
                                             <% const thisLayanan = layanan.toJSON() %>
-                                            <p class="sublayanan-text whitespace-nowrap font-semibold"><%= thisLayanan.jumlahLoket %> LOKET</p>
+                                            <p class="text-2xl whitespace-nowrap font-semibold"><%= thisLayanan.jumlahLoket %> LOKET</p>
                                         </div>
-                                        <div class="w-full p-12 pt-0">
-                                            <button class="tiket-button btn btn-<%= sistemClass[i] %> h-fit w-full p-8 px-16" data-id="<%= thisLayanan.id %>" data-layanan="<%= thisLayanan.nama %>">
+                                        <div class="w-full p-4 pt-0">
+                                            <button class="tiket-button btn btn-<%= sistemClass[i] %> h-fit w-full p-4 px-8" data-id="<%= thisLayanan.id %>" data-layanan="<%= thisLayanan.nama %>">
                                                 <p class="text-white mb-0 flex items-center">
                                                     <img src="/public_template/img/printer.svg" class="inline img-btn mr-4" />
                                                     Ambil Tiket
@@ -76,18 +76,18 @@
         </div>
 </main>
 <div class="w-[300px] h-[300px] border border-neutral hidden p-2 print:block">
-    <div class="flex mb-2 justify-between">
+    <div class="flex mb-4 justify-between">
         <small>Jambi, <span id="datePrint"></span></small>
         <small id="timePrint"> - </small>
     </div>
-    <img src="/admin_template/dist/assets/images/mini-logo.png" alt="" class="h-12 mx-auto mb-2" />
-    <h1 class="text-md font-semibold text-center mb-2">Dinas Kependudukan dan Pencatatan Sipil Kota Jambi</h1>
+    <img src="/public_template/img/icon.png" alt="" class="h-12 mx-auto mb-2" />
+    <h1 class="text-md font-semibold text-center mb-2">BPPRD Kota Jambi</h1>
     <p class="font-bold text-center text-5xl" id="noAntrianPrint">A-19</p>
     <p class="text-center font-semibold italic h-16">
         PELAYANAN :
         <span id="layananPrint">DAFDUK</span>
     </p>
-    <p class="text-2xs">
+    <p class="text-[.7rem]">
         Budayakan antri untuk kenyamanan bersama.
         <br />
         Terimakasih atas kunjungannya
