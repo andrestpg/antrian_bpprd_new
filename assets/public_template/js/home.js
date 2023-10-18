@@ -5,10 +5,12 @@ let selectedVoice = '';
 const socket = io();
 
 const player = videojs('videojs');
+const tune = videojs('notification');
 
 window.onload = () => {
     initRunText();
     player.src( {type: 'video/mp4', src: '/public_template/videos/video1.mp4'} );
+    tune.src( {type: 'video/mp4', src: '/public_template/audio/notification.mp4'} );
     player.ready(() => player.play())
     player.on('ended', (a) => {
         let video = 'video1';
@@ -23,7 +25,7 @@ window.onload = () => {
 }
 
 $(document).on('keypress', (e) => {
-    if($('label[for="webSpeechConfirm"]').is(':focus')){
+    if($('label[for="webSpeechConfirm"]:focus')){
         $('label[for="webSpeechConfirm"]').click()
     }
 })
@@ -48,9 +50,11 @@ socket.on("nextAntrian", async function (msg) {
 });
 
 socket.on("callFromAdmin", async (msg) => {
+    console.log('call from admin')
     try{
         const hash = generateHash();
         const noLoket = await $(`.loket${msg.loketId}`).data("numb");
+        console.log({noLoket, msg})
         $(`.loket${msg.loketId} .loket-numb`).html(msg.noAntrian);
         callClient(msg.noAntrian, noLoket, hash);
     }catch(err){
@@ -63,7 +67,7 @@ $(".speak-confirm").on("click", function () {
 });
 
 const callClient = async (_noAntrianText, _noLoket, hash) => {
-
+    console.log('calling')
     noAntrianReplace = _noAntrianText;
     noAntrianReplace = noAntrianReplace.replace("-", "!, ");
 
@@ -87,7 +91,7 @@ let currentHash = '';
 
 setInterval(() => {
     let isSpeaking = antrianSynth.speaking ? true : false;
-    if(player.paused()){
+    if(tune.paused()){
         if(!isSpeaking && speakList.length > 0){
             if(antrianOnCall != speakList[0].noAntrian){
                 calling(speakList)
@@ -104,8 +108,8 @@ setInterval(() => {
 },500)
 
 const calling = async (speakList) => {
-    if(player.paused()){
-        player.play();
+    if(tune.paused()){
+        tune.play();
         const speak = new SpeechSynthesisUtterance(speakList[0].speak);
         if(selectedVoice == ''){
             const voices = await getVoices();
@@ -117,7 +121,7 @@ const calling = async (speakList) => {
         speak.lang = "id-ID";
         antrianOnCall = speakList[0].noAntrian;
         currentHash = speakList[0].hash;
-        player.one('ended', () => {
+        tune.one('ended', () => {
             setActiveLoket(noLoket, noAntrian)
             speechSynthesis.speak(speak);
         })

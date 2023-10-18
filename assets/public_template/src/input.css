@@ -4,7 +4,7 @@
 
 @layer base {
     body{
-        @apply bg-[url('../img/bg1.png')] bg-cover bg-center bg-no-repeat
+        @apply bg-secondary bg-cover bg-center bg-no-repeat
     }
 }
 

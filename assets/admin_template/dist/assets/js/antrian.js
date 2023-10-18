@@ -22,7 +22,7 @@ socket.on("nextAntrian", async function (msg) {
         if(userLoketId === msg.loketId){
             const noAntrianText = msg.noAntrian;
             $('#currentText').html(noAntrianText);
-            currentVal = getAntrianNumb(res.noAntrian);
+            currentVal = getAntrianNumb(msg.noAntrian);
         }
     } catch (err) {
         console.log(err);
@@ -81,6 +81,7 @@ $('#callBtn').on('click', function() {
             noAntrian: noAntrianText,
             loketId: userLoketId
         });
+        console.log({noAntrianText, userLoketId})
         setTimeout(() => {
             $(this).prop('disabled', false);
         },4000);

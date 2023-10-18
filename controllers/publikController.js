@@ -32,82 +32,20 @@ const getLoket = async (kategoriArr) => {
         };
     }
     const loket = await Loket.findAll(loketQuery);
-    console.log({loket})
     return loket;
-};
-
-const getConf = (loketLength) => {
-    let conf = {
-        gridCols: "grid-cols-2 gap-14",
-        textLabelClass: "text-responsive",
-        textNumberClass: "text-number-responsive",
-    };
-    loketLength > 6 && (conf["gridCols"] = "grid-cols-3 gap-16");
-    loketLength > 9 &&
-        (conf = {
-            gridCols: "grid-cols-4 gap-14",
-            textLabelClass: "text-responsive-sm",
-            textNumberClass: "text-number-responsive-md",
-        });
-    loketLength > 12 &&
-        (conf = {
-            gridCols: "grid-cols-5 grid-rows-4 gap-14",
-            textLabelClass: "text-responsive-sm",
-            textNumberClass: "text-number-responsive-sm",
-        });
-
-    return conf;
 };
 
 module.exports.index = async (req, res) => {
     try {
-
-        let lokets = await getLoket([1,3,4]);
+        const kategoriLokets = [1,2,3,4]
+        const allLokets = await getLoket()
+        const lokets = allLokets.filter( it => kategoriLokets.includes(it.layanan.kategoriId))
+        const banks = allLokets.filter( it => it.layanan.kategoriId === 5)
         res.render("./public/index", {
-            lokets: lokets,
+            lokets,
+            banks,
             script: "home",
             title: "Status Antrian",
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).render("500");
-    }
-};
-
-module.exports.display1 = async (req, res) => {
-    try {
-        let lokets = await getLoket([1]);
-        lokets = lokets.filter(loket => loket.layanan != null)
-        const { gridCols, textLabelClass, textNumberClass } = getConf(lokets.length);
-        // res.send(lokets);
-        res.render("./public/display1", {
-            lokets: lokets,
-            script: "home",
-            title: "Status Antrian",
-            gridCols,
-            textLabelClass,
-            textNumberClass,
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).render("500");
-    }
-};
-
-module.exports.display2 = async (req, res) => {
-    try {
-
-        let lokets = await getLoket([2]);
-        lokets = lokets.filter(loket => loket.layanan != null)
-        const { gridCols, textLabelClass, textNumberClass } = getConf(lokets.length);
-        // res.send(lokets);
-        res.render("./public/display2", {
-            lokets: lokets,
-            script: "home",
-            title: "Status Antrian",
-            gridCols,
-            textLabelClass,
-            textNumberClass,
         });
     } catch (err) {
         console.log(err);
