@@ -140,7 +140,6 @@ const calling = async (speakList) => {
             const voices = await getVoices();
             const voiceId = await voices.filter(val => val.lang === 'id-ID');
             const wmnVoice = voiceId.filter( it => it.voiceURI === 'Microsoft Gadis Online (Natural) - Indonesian (Indonesia)')
-            console.log({voiceId, wmnVoice})
             if(wmnVoice.length > 0){
                 speak.voice = wmnVoice[0]
                 selectedVoice = 'P'
@@ -194,15 +193,9 @@ const getVoices = async () => {
 }
 
 const getNextAntrian = async (loketId) => {
-    console.log('getting next antrian')
     await clearTimeout(timeout[`timeout${loketId}`]);
     $.get(`/publik/next_antrian/${loketId}`).done(async (res) => {
-        console.log({res})
-        console.log('checking loket status')
-        if(loketStatus[`loket${loketId}`]){
-            console.log('status find')
-        }else{
-            console.log('status not found')
+        if(!loketStatus[`loket${loketId}`]){
             loketStatus[`loket${loketId}`] = 0;
         }
 
@@ -213,13 +206,10 @@ const getNextAntrian = async (loketId) => {
                 loketStatus[`loket${loketId}`] = 0;
             }
 
-            console.log({currentStatus: loketStatus[`loket${loketId}`]})
-
             const noLoket = $(`.loket${loketId}`).data("numb");
             $(`.loket${loketId} .loket-numb`).html(res.noAntrian);
             const noAntrianText = `${res.loketData.layanan.kodeAntrian}-${res.noAntrian}`
             callClient(noAntrianText, noLoket);
-            console.log({noAntrianText})
             socket.emit('nextAntrian', {
                 noAntrian: noAntrianText,
                 loketId: loketId
