@@ -1,81 +1,106 @@
+let timeout = {};
 let speakList = [];
 let speakExecutionList = {};
 let loketStatus = {};
+let currentVideo = 1;
 let selectedVoice = '';
+const excluded = [79, 80, 86]
+const delay = 40 * 1000;
 const socket = io();
 
 const player = videojs('videojs');
 const tune = videojs('notification');
 
-window.onload = () => {
+if ("speechSynthesis" in window) {
+    globalThis.antrianSynth = window.speechSynthesis;
+}
+
+window.onload = async () => {
     initRunText();
-    player.src( {type: 'video/mp4', src: '/public_template/videos/video1.mp4'} );
-    tune.src( {type: 'video/mp4', src: '/public_template/audio/notification.mp4'} );
+    player.src({ type: 'video/mp4', src: '/public_template/videos/video1.mp4' });
+    tune.src({ type: 'video/mp4', src: '/public_template/audio/notification.mp4' });
     player.ready(() => player.play())
     player.on('ended', (a) => {
         let video = 'video1';
-        currentVideo == 1 ? (video = 'video2', currentVideo = 2) : (currentVideo = 1, video='video1')
-        player.src( {type: 'video/mp4', src: `/public_template/videos/${video}.mp4`} );
+        currentVideo == 1 ? (video = 'video2', currentVideo = 2) : (currentVideo = 1, video = 'video1')
+        player.src({ type: 'video/mp4', src: `/public_template/videos/${video}.mp4` });
         player.ready(() => player.play())
     });
+
     setTimeout(() => {
         document.getElementById('webSpeechConfirm').checked = true
         $('label[for="webSpeechConfirm"]').focus()
     }, 2000);
 }
 
+$('label[for="webSpeechConfirm"]').on("click", function () {
+    $(".confirm-overlay").addClass("visually-hidden");
+    const loket = $(".card-loket-status");
+    $.each(loket, async function (i, data) {
+        let loketId = $(this).data("id");
+        await getNextAntrian(loketId);
+    });
+});
+
 $(document).on('keypress', (e) => {
-    if($('label[for="webSpeechConfirm"]:focus')){
+    if ($('label[for="webSpeechConfirm"]:focus')) {
         $('label[for="webSpeechConfirm"]').click()
     }
 })
-
-if ("speechSynthesis" in window) {
-    globalThis.antrianSynth = window.speechSynthesis;
-}
-
-const getVoices = async () => {
-    const voices = await antrianSynth.getVoices()
-    return voices
-}
 
 socket.on("nextAntrian", async function (msg) {
     try {
         const noLoket = $(`.loket${msg.loketId}`).data("numb");
         $(`.loket${msg.loketId} .loket-numb`).html(msg.noAntrian);
         callClient(msg.noAntrian, noLoket);
+
+        if(!excluded.includes(msg.loketId)){
+            timeout[`timeout${msg.loketId}`] = setTimeout(() => {
+                getNextAntrian(msg.loketId);
+            }, delay);
+        }
     } catch (err) {
         console.log(err);
     }
 });
 
 socket.on("callFromAdmin", async (msg) => {
-    console.log('call from admin')
-    try{
+    try {
+        await clearTimeout(timeout[`timeout${msg.loketId}`]);
         const hash = generateHash();
         const noLoket = await $(`.loket${msg.loketId}`).data("numb");
-        console.log({noLoket, msg})
         $(`.loket${msg.loketId} .loket-numb`).html(msg.noAntrian);
         callClient(msg.noAntrian, noLoket, hash);
-    }catch(err){
+
+        if(!excluded.includes(msg.loketId)){
+            timeout[`timeout${msg.loketId}`] = setTimeout(() => {
+                getNextAntrian(msg.loketId);
+            }, delay);
+        }
+    } catch (err) {
         console.log(err)
     }
 });
 
-$(".speak-confirm").on("click", function () {
-    $(".confirm-overlay").addClass("visually-hidden");
+socket.on("newAntrian", async (msg) => {
+    await clearTimeout(timeout[`timeout${msg.loketId}`]);
+    const standByLoket = getStandByLoket(msg.layananId)
+
+    if (standByLoket.length > 0) {
+        const loketId = standByLoket[0]
+        loketStatus[`loket${loketId}`] = 1;
+        getNextAntrian(loketId);
+    }
 });
 
 const callClient = async (_noAntrianText, _noLoket, hash) => {
-    console.log('calling')
-    noAntrianReplace = _noAntrianText;
-    noAntrianReplace = noAntrianReplace.replace("-", "!, ");
+    const noAntrianReplace = _noAntrianText.replace("-", "!, ");
 
     const speakListObject = {
         hash,
         noLoket: _noLoket,
         noAntrian: _noAntrianText,
-        speak : `Nomor, antrian, ${noAntrianReplace}. Di loket. ${_noLoket == 18 ? 'K-I-A' : _noLoket}`
+        speak: `Nomor, antrian, ${noAntrianReplace}. Di loket. ${_noLoket == 18 ? 'K-I-A' : _noLoket}`
     }
     speakList.push(speakListObject);
 };
@@ -91,33 +116,45 @@ let currentHash = '';
 
 setInterval(() => {
     let isSpeaking = antrianSynth.speaking ? true : false;
-    if(tune.paused()){
-        if(!isSpeaking && speakList.length > 0){
-            if(antrianOnCall != speakList[0].noAntrian){
+    if (tune.paused()) {
+        if (!isSpeaking && speakList.length > 0) {
+            if (antrianOnCall != speakList[0].noAntrian) {
                 calling(speakList)
-            }else{
-                if(typeof speakList[0].hash != 'undefined' && speakList[0].hash != currentHash){
+            } else {
+                if (typeof speakList[0].hash != 'undefined' && speakList[0].hash != currentHash) {
                     calling(speakList)
-                }else{
+                } else {
                     speakList.shift();
                     document.getElementById('modalToggle').checked = false
                 }
             }
         }
     }
-},500)
+}, 500)
 
 const calling = async (speakList) => {
-    if(tune.paused()){
+    if (tune.paused()) {
         tune.play();
         const speak = new SpeechSynthesisUtterance(speakList[0].speak);
-        if(selectedVoice == ''){
+        if (selectedVoice == '') {
             const voices = await getVoices();
             const voiceId = await voices.filter(val => val.lang === 'id-ID');
-            speak.voice = voiceId[0]
+            const wmnVoice = voiceId.filter( it => it.voiceURI === 'Microsoft Gadis Online (Natural) - Indonesian (Indonesia)')
+            console.log({voiceId, wmnVoice})
+            if(wmnVoice.length > 0){
+                speak.voice = wmnVoice[0]
+                selectedVoice = 'P'
+            }else{
+                speak.voice = voiceId[0]
+                selectedVoice = 'L'
+            }
         }
-        const {noLoket, noAntrian} = speakList[0];
-        speak.rate = 0.85;
+        const { noLoket, noAntrian } = speakList[0];
+        if(selectedVoice === 'P'){
+            speak.rate = 1;
+        }else{
+            speak.rate = 0.85;
+        }
         speak.lang = "id-ID";
         antrianOnCall = speakList[0].noAntrian;
         currentHash = speakList[0].hash;
@@ -151,4 +188,71 @@ const initRunText = () => {
     });
 };
 
-  
+const getVoices = async () => {
+    const voices = await antrianSynth.getVoices()
+    return voices
+}
+
+const getNextAntrian = async (loketId) => {
+    console.log('getting next antrian')
+    await clearTimeout(timeout[`timeout${loketId}`]);
+    $.get(`/publik/next_antrian/${loketId}`).done(async (res) => {
+        console.log({res})
+        console.log('checking loket status')
+        if(loketStatus[`loket${loketId}`]){
+            console.log('status find')
+        }else{
+            console.log('status not found')
+            loketStatus[`loket${loketId}`] = 0;
+        }
+
+        if (res.status == 1) {
+            if(res.noAntrian){
+                loketStatus[`loket${loketId}`] = 1;
+            }else{
+                loketStatus[`loket${loketId}`] = 0;
+            }
+
+            console.log({currentStatus: loketStatus[`loket${loketId}`]})
+
+            const noLoket = $(`.loket${loketId}`).data("numb");
+            $(`.loket${loketId} .loket-numb`).html(res.noAntrian);
+            const noAntrianText = `${res.loketData.layanan.kodeAntrian}-${res.noAntrian}`
+            callClient(noAntrianText, noLoket);
+            console.log({noAntrianText})
+            socket.emit('nextAntrian', {
+                noAntrian: noAntrianText,
+                loketId: loketId
+            });
+
+            if(!excluded.includes(loketId)){
+                timeout[`timeout${loketId}`] = setTimeout(() => {
+                    getNextAntrian(loketId);
+                }, delay);
+            }
+        }else{
+            loketStatus[`loket${loketId}`] = 0;
+        }
+    }).catch(err => {
+        console.log({ err })
+        loketStatus[`loket${loketId}`] = 0;
+    })
+}
+
+const getStandByLoket = (layananId) => {
+    let filtered = [], standBy = [];
+    const loket = $(".card-loket-status");
+    $.each(loket, async function (i, data) {
+        const loketLayananId = $(this).data("layananid");
+        if(parseInt(loketLayananId) === parseInt(layananId)){
+            filtered.push(parseInt($(this).data("id")))
+        }
+    });
+    filtered.forEach(it => {
+        if(loketStatus[`loket${it}`] === 0){
+            standBy.push(it)
+        }
+    })
+    return standBy
+}
+

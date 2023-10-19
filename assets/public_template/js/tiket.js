@@ -1,5 +1,9 @@
 const socket = io();
 
+window.onload = () => {
+    initRunText()
+}
+
 $(".tiket-button").on("click", function () {
     $('.tiket-button').prop('disabled', true);
     showLoading($(this));
@@ -7,6 +11,7 @@ $(".tiket-button").on("click", function () {
     const kodeLayanan = $(this).data("layanan");
     const defaultHTML = $(this).children("p").html();
 
+    console.log('create new Antrian')
     $.get(`/publik/daftar_antrian/${layananId}`)
         .done((res) => {
             const noAntrianText = res.kodeAntrian + '-' + res.noAntrian
@@ -20,6 +25,11 @@ $(".tiket-button").on("click", function () {
                 setTimeout(() => {
                     $(this).children("p").html(defaultHTML);
                 }, 2000);
+                console.log('emitting')
+                socket.emit('newAntrian', {
+                    noAntrian: noAntrianText,
+                    layananId: layananId
+                });
             } else {
                 setTimeout(() => {
                     hideLoading($(this));
@@ -93,3 +103,26 @@ const setActiveTab = (index) => {
         i == index ? $(this).removeClass('hidden') : $(this).addClass('hidden')
     })
 }
+
+const initRunText = () => {
+    const runningTextWrapper = document.querySelector(".running-text-wrapper");
+    const runningTextWrapperWidth = runningTextWrapper.offsetWidth + 10;
+    const runningTextListWidth = document.querySelector(".running-text-list").offsetWidth + 20;
+    const totalWidth = runningTextListWidth + runningTextWrapperWidth;
+
+    const runningText = anime({
+        targets: ".running-text-list",
+        translateX: [runningTextWrapperWidth, -runningTextListWidth], // from 100 to 250
+        duration: totalWidth * 20,
+        easing: "linear",
+        loop: true,
+    });
+
+    runningTextWrapper.addEventListener("mouseenter", () => {
+        runningText.pause();
+    });
+
+    runningTextWrapper.addEventListener("mouseleave", () => {
+        runningText.play();
+    });
+};

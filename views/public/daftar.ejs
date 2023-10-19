@@ -47,17 +47,17 @@
                         <% }else{ %>
                             <div class="w-full grid grid-cols-<%= kategori.layanans.length %> gap-12">
                                 <% kategori.layanans.forEach( layanan => { %> 
-                                    <div class="card items-center shadow-lg gap-4">
+                                    <div class="card h-full items-center shadow-lg gap-8">
                                         <div class="text-2xl w-full h-24 flex items-center justify-center font-medium text-neutral/80 bg-<%= sistemClass[i] %>/20 text-center p-8"><%= layanan.nama %></div>
                                         <div class="flex flex-col items-center mb-6">
                                             <div class="w-24">
-                                                <img src="/public_template/img/loket.svg" class="w-full">
+                                                <img src="/public_template/img/loket.svg" class="w-full p-4">
                                             </div>
                                             <% const thisLayanan = layanan.toJSON() %>
                                             <p class="text-2xl whitespace-nowrap font-semibold"><%= thisLayanan.jumlahLoket %> LOKET</p>
                                         </div>
                                         <div class="w-full p-4 pt-0">
-                                            <button class="tiket-button btn btn-<%= sistemClass[i] %> h-fit w-full p-4 px-8" data-id="<%= thisLayanan.id %>" data-layanan="<%= thisLayanan.nama %>">
+                                            <button class="tiket-button btn btn-<%= sistemClass[i] %> h-fit w-full p-8" data-id="<%= thisLayanan.id %>" data-layanan="<%= thisLayanan.nama %>">
                                                 <p class="text-white mb-0 flex items-center">
                                                     <img src="/public_template/img/printer.svg" class="inline img-btn mr-4" />
                                                     Ambil Tiket
@@ -72,7 +72,7 @@
                 </div>
                 <% }) %>
             </div>
-            <div class="btn-primary btn-info btn-success btn-secondary btn-warning text-info text-success text-secondary text-warning border-info/20 border-success/20 border-secondary/20 border-warning/20 bg-info/20 bg-success/20 bg-secondary/20 bg-warning/20 hidden"></div>
+            <div class="btn-info text-info text-success text-secondary text-warning border-info/20 border-success/20 border-secondary/20 border-warning/20 bg-info/20 bg-success/20 bg-secondary/20 bg-warning/20 hidden"></div>
         </div>
 </main>
 <div class="w-[300px] h-[300px] border border-neutral hidden p-2 print:block">

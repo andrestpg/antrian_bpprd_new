@@ -45,7 +45,7 @@ $('#nextBtn').on('click', async function() {
 
 const getNextAntrian = async (btn) => {
     try{
-        $.get(`/publik/next_antrian/${userLayananId}/${userLoketId}`).done( async (res) => {
+        $.get(`/publik/next_antrian/${userLoketId}`).done( async (res) => {
             if(res.status == 1){
                 currentVal = res.noAntrian;
                 const noAntrianText = userLoketKodeAntrian +'-'+ res.noAntrian;
@@ -81,7 +81,6 @@ $('#callBtn').on('click', function() {
             noAntrian: noAntrianText,
             loketId: userLoketId
         });
-        console.log({noAntrianText, userLoketId})
         setTimeout(() => {
             $(this).prop('disabled', false);
         },4000);
@@ -101,11 +100,9 @@ const getAntrianPrefix = (i) => {
 
 const getAntrianNumb = (noAntrian) => {
     let result = '';
-    if(noAntrian.length >= 4){
+    if(noAntrian.length >= 3){
         const arrString = noAntrian.split('-');
-        const numb = arrString[1];
-        numb[0] != '0' ? (result = numb.slice(1,1)) : (result = numb);
-        console.log(result)
+        result = arrString[1];
     }else{
         result = noAntrian
     }

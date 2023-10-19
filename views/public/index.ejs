@@ -22,7 +22,12 @@
                             <% lokets.forEach(loket => { %> 
                                 <!-- loket -->
                                 <div class="w-ful h-full flex items-center">
-                                    <div class="w-full h-fit grid grid-cols-5 border-b-4 border-error loket<%= loket.id %>" data-numb="<%= loket.noLoket %>">
+                                    <div class="w-full h-fit grid grid-cols-5 border-b-4 border-error card-loket-status loket<%= loket.id %>" 
+                                        data-layananid="<%= loket.layanan.id %>" 
+                                        data-id="<%= loket.id %>" 
+                                        data-kodeantrian="<%= loket.layanan.kodeAntrian %>" 
+                                        data-numb="<%= loket.noLoket %>"
+                                        >
                                         <div class="col-span-3 flex flex-col items-center py-2 px-4 bg-error font-bold">
                                             <p class="text-3xl w-full block text-left text-white">LOKET <%= loket.noLoket %> </p>
                                             <p class="text-2xl whitespace-nowrap w-full block text-right text-yellow-200"><%= loket.layanan.nama %> </p>
@@ -46,7 +51,12 @@
                             <% banks.forEach(loket => { %> 
                                 <!-- loket -->
                                 <div class="w-ful h-full flex items-center">
-                                    <div class="w-full h-fit grid grid-cols-5 border-b-4 border-error loket<%= loket.id %>" data-numb="<%= loket.noLoket %>">
+                                    <div class="w-full h-fit grid grid-cols-5 border-b-4 border-error card-loket-status loket<%= loket.id %>" 
+                                        data-layananid="<%= loket.layanan.id %>" 
+                                        data-id="<%= loket.id %>" 
+                                        data-kodeantrian="<%= loket.layanan.kodeAntrian %>" 
+                                        data-numb="<%= loket.noLoket %>"
+                                        >
                                         <div class="col-span-3 flex flex-col items-center py-2 px-4 bg-error font-bold">
                                             <p class="text-3xl w-full block text-left text-white">LOKET <%= loket.noLoket %> </p>
                                             <p class="text-2xl whitespace-nowrap w-full block text-right text-yellow-200"><%= loket.layanan.nama %> </p>

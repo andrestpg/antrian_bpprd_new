@@ -132,14 +132,23 @@ module.exports.daftar_antrian = async (req, res) => {
 };
 
 module.exports.next_antrian = async (req, res) => {
-    const layananId = req.params.layananId;
     const loketId = req.params.loketId;
+    
+    await Loket.belongsTo(Layanan) 
+    const loketData = await Loket.findOne({
+        where: {
+            id: loketId
+        },
+        include: [Layanan]
+    })
+
     const todayStart = new Date().setHours(0, 0, 0, 0);
     const todayEnd = new Date().setHours(23, 0, 0, 0);
+    
     try {
         const antrian = await Antrian.findOne({
             where: {
-                layananId,
+                layananId: loketData.layananId,
                 createdAt: {
                     [Op.gt]: todayStart,
                     [Op.lt]: todayEnd,
@@ -173,6 +182,7 @@ module.exports.next_antrian = async (req, res) => {
                 res.json({
                     status: 1,
                     noAntrian: antrian.noAntrian,
+                    loketData
                 });
             } catch (err) {
                 console.log("UPDATE ON NEXT ANTRIAN ERROR: ", err);

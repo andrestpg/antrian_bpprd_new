@@ -45,6 +45,9 @@ io.on('connection', (socket) => {
     socket.on('callFromAdmin', async (msg) => {
         io.emit('callFromAdmin', msg);
     });
+    socket.on('newAntrian', async (msg) => {
+        io.emit('newAntrian', msg);
+    });
 });
 
 // Home-----------------
