@@ -1,9 +1,10 @@
-let timeout = {};
+// let timeout = {};
 let speakList = [];
 let speakExecutionList = {};
 let loketStatus = {};
 let currentVideo = 1;
 let selectedVoice = '';
+let currentVideoIndex = 10;
 const excluded = [79, 80, 86]
 const delay = 40 * 1000;
 const socket = io();
@@ -17,13 +18,20 @@ if ("speechSynthesis" in window) {
 
 window.onload = async () => {
     initRunText();
-    player.src({ type: 'video/mp4', src: '/public_template/videos/video1.mp4' });
     tune.src({ type: 'video/mp4', src: '/public_template/audio/notification.mp4' });
+    
+    const videoList = await getVideo()
+    player.src(videoList[currentVideoIndex]);
     player.ready(() => player.play())
     player.on('ended', (a) => {
-        let video = 'video1';
-        currentVideo == 1 ? (video = 'video2', currentVideo = 2) : (currentVideo = 1, video = 'video1')
-        player.src({ type: 'video/mp4', src: `/public_template/videos/${video}.mp4` });
+        const videoLength = videoList.length;
+        currentVideoIndex = currentVideoIndex + 1; 
+        let videoSrc = videoList[currentVideoIndex]
+        if(!videoSrc){
+            currentVideoIndex = 0; 
+            videoSrc = videoList[currentVideoIndex]
+        }
+        player.src(videoSrc);
         player.ready(() => player.play())
     });
 
@@ -54,11 +62,11 @@ socket.on("nextAntrian", async function (msg) {
         $(`.loket${msg.loketId} .loket-numb`).html(msg.noAntrian);
         callClient(msg.noAntrian, noLoket);
 
-        if(!excluded.includes(msg.loketId)){
-            timeout[`timeout${msg.loketId}`] = setTimeout(() => {
-                getNextAntrian(msg.loketId);
-            }, delay);
-        }
+        // if(!excluded.includes(msg.loketId)){
+        //     timeout[`timeout${msg.loketId}`] = setTimeout(() => {
+        //         getNextAntrian(msg.loketId);
+        //     }, delay);
+        // }
     } catch (err) {
         console.log(err);
     }
@@ -72,11 +80,11 @@ socket.on("callFromAdmin", async (msg) => {
         $(`.loket${msg.loketId} .loket-numb`).html(msg.noAntrian);
         callClient(msg.noAntrian, noLoket, hash);
 
-        if(!excluded.includes(msg.loketId)){
-            timeout[`timeout${msg.loketId}`] = setTimeout(() => {
-                getNextAntrian(msg.loketId);
-            }, delay);
-        }
+        // if(!excluded.includes(msg.loketId)){
+        //     timeout[`timeout${msg.loketId}`] = setTimeout(() => {
+        //         getNextAntrian(msg.loketId);
+        //     }, delay);
+        // }
     } catch (err) {
         console.log(err)
     }
@@ -244,5 +252,22 @@ const getStandByLoket = (layananId) => {
         }
     })
     return standBy
+}
+
+const getVideo = async () => {
+    try {
+        const ytURL = 'https://youtube.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&channelId=UCrh5SkN1ruTHJQPlFcyQYtQ&maxResults=20&key=AIzaSyBfPzjYt1_OcUOs_E-67r9wE-v4f0FNvYE';
+        const {items} = await $.get(ytURL)
+        const result = items.map( it => {
+            return { 
+                type: 'video/youtube', 
+                src: `https://youtu.be/${it.contentDetails.upload.videoId}` 
+            }
+        })
+    
+        return result
+    } catch (error) {
+        return[{type: 'video/youtube', src: 'https://youtu.be/OoF15zxM4Po'}]
+    }
 }
 
