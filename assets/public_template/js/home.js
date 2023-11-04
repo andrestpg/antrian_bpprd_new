@@ -3,7 +3,8 @@ let speakList = [];
 let speakExecutionList = {};
 let loketStatus = {};
 let currentVideo = 1;
-let selectedVoice = '';
+let selectedVoice = null;
+let voiceGender = '';
 let currentVideoIndex = 10;
 const excluded = [79, 80, 86]
 const delay = 40 * 1000;
@@ -74,7 +75,7 @@ socket.on("nextAntrian", async function (msg) {
 
 socket.on("callFromAdmin", async (msg) => {
     try {
-        await clearTimeout(timeout[`timeout${msg.loketId}`]);
+        // await clearTimeout(timeout[`timeout${msg.loketId}`]);
         const hash = generateHash();
         const noLoket = await $(`.loket${msg.loketId}`).data("numb");
         $(`.loket${msg.loketId} .loket-numb`).html(msg.noAntrian);
@@ -144,24 +145,29 @@ const calling = async (speakList) => {
     if (tune.paused()) {
         tune.play();
         const speak = new SpeechSynthesisUtterance(speakList[0].speak);
-        if (selectedVoice == '') {
+        if (selectedVoice === null) {
             const voices = await getVoices();
             const voiceId = await voices.filter(val => val.lang === 'id-ID');
             const wmnVoice = voiceId.filter( it => it.voiceURI === 'Microsoft Gadis Online (Natural) - Indonesian (Indonesia)')
+            console.log({voiceId, wmnVoice})
             if(wmnVoice.length > 0){
                 speak.voice = wmnVoice[0]
-                selectedVoice = 'P'
+                selectedVoice = wmnVoice[0]
+                voiceGender = 'P'
             }else{
                 speak.voice = voiceId[0]
-                selectedVoice = 'L'
+                selectedVoice = voiceId[0]
+                voiceGender = 'L'
+            }
+        }else{
+            speak.voice = selectedVoice
+            if(voiceGender === 'P'){
+                speak.rate = 1;
+            }else{
+                speak.rate = 0.85;
             }
         }
         const { noLoket, noAntrian } = speakList[0];
-        if(selectedVoice === 'P'){
-            speak.rate = 1;
-        }else{
-            speak.rate = 0.85;
-        }
         speak.lang = "id-ID";
         antrianOnCall = speakList[0].noAntrian;
         currentHash = speakList[0].hash;
@@ -201,7 +207,7 @@ const getVoices = async () => {
 }
 
 const getNextAntrian = async (loketId) => {
-    await clearTimeout(timeout[`timeout${loketId}`]);
+    // await clearTimeout(timeout[`timeout${loketId}`]);
     $.get(`/publik/next_antrian/${loketId}`).done(async (res) => {
         if(!loketStatus[`loket${loketId}`]){
             loketStatus[`loket${loketId}`] = 0;
@@ -223,11 +229,11 @@ const getNextAntrian = async (loketId) => {
                 loketId: loketId
             });
 
-            if(!excluded.includes(loketId)){
-                timeout[`timeout${loketId}`] = setTimeout(() => {
-                    getNextAntrian(loketId);
-                }, delay);
-            }
+            // if(!excluded.includes(loketId)){
+            //     timeout[`timeout${loketId}`] = setTimeout(() => {
+            //         getNextAntrian(loketId);
+            //     }, delay);
+            // }
         }else{
             loketStatus[`loket${loketId}`] = 0;
         }
