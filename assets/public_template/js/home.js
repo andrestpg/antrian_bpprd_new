@@ -21,17 +21,23 @@ window.onload = async () => {
     initRunText();
     tune.src({ type: 'video/mp4', src: '/public_template/audio/notification.mp4' });
     
-    const videoList = await getVideo()
-    player.src(videoList[currentVideoIndex]);
-    player.ready(() => player.play())
+    // const videoList = await getVideo()
+    // console.log({videoList})
+    // player.src(videoList[currentVideoIndex]);
+        let videoSrc = {type: 'video/youtube', src: 'https://youtu.be/cpue8A6PZ-M'}
+    player.src(videoSrc);
+    player.ready(() => {
+        console.log('player ready')
+        player.play()
+    })
     player.on('ended', (a) => {
-        const videoLength = videoList.length;
-        currentVideoIndex = currentVideoIndex + 1; 
-        let videoSrc = videoList[currentVideoIndex]
-        if(!videoSrc){
-            currentVideoIndex = 0; 
-            videoSrc = videoList[currentVideoIndex]
-        }
+        // const videoLength = videoList.length;
+        // currentVideoIndex = currentVideoIndex + 1; 
+        // let videoSrc = videoList[currentVideoIndex]
+        // if(!videoSrc){
+        //     currentVideoIndex = 0; 
+        //     videoSrc = videoList[currentVideoIndex]
+        // }
         player.src(videoSrc);
         player.ready(() => player.play())
     });
@@ -92,7 +98,7 @@ socket.on("callFromAdmin", async (msg) => {
 });
 
 socket.on("newAntrian", async (msg) => {
-    await clearTimeout(timeout[`timeout${msg.loketId}`]);
+    // await clearTimeout(timeout[`timeout${msg.loketId}`]);
     const standByLoket = getStandByLoket(msg.layananId)
 
     if (standByLoket.length > 0) {
@@ -270,10 +276,11 @@ const getVideo = async () => {
                 src: `https://youtu.be/${it.contentDetails.upload.videoId}` 
             }
         })
-    
+        console.log({result})
         return result
     } catch (error) {
-        return[{type: 'video/youtube', src: 'https://youtu.be/OoF15zxM4Po'}]
+        console.log({error})
+        return[{type: 'video/youtube', src: 'https://youtu.be/cpue8A6PZ-M'}]
     }
 }
 
